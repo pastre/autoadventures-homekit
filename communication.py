@@ -11,13 +11,21 @@ LAMPS = [
 	make_lamp(4, "o quarto"),
 	make_lamp(5, "a sala"),
 ]
-def update(lampName):
+
+ligados = []
+
+def update(lampName, to):
 	print("Updating", lampName)
 	print("Lamps are", LAMPS)
 	for lamp in LAMPS:
 		if lamp['name'] == lampName:
 			url = "http://192.168.5." + str(lamp['ip']) + "/update"
-			requests.get(url)
+			if to and (not lampName in ligados):
+				ligados.append(lampName)
+				requests.get(url)
+			elif (not to) and (lampName in ligados):
+				ligados.remove(lampName)
+				requests.get(url)
 			print("Atualizei a", lamp['name'])
 			return
 	print("passou reto")

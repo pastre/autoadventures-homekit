@@ -24,7 +24,8 @@ class Lamp(Accessory):
 		self.char_on = serv_light.configure_char('On', setter_callback=self.setBulb)
 
 	def setBulb(self, value):
-		com.update(self.displayName)
+		print('value is', value)
+		com.update(self.displayName, value == 1)
 
 
 def get_bridge(driver):
