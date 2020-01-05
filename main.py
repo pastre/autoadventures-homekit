@@ -56,10 +56,10 @@ def message_delegate(message):
 	for _, accessory in myBridge.accessories.items():
 		if accessory.display_name == asStr:
 			accessory.flipBulb()
-		
 
-set_message_delegate(message_delegate)
-start_switch_service()
+
+#set_message_delegate(message_delegate)
+#start_switch_service()
 
 # Start it!
 driver.start()
