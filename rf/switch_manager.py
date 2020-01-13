@@ -21,7 +21,8 @@ class SwitchManager:
 	def onActiveLamp(self, lampName):
 		self.lampStates[lampName] = not self.lampStates[lampName]
 		self.lastActive = lampName
-		print("LampStates are", self.lampStates)
+#		print("LampStates are", self.lampStates)
+		self.onSwitchChanged(self.lampStates)
 	def actOnLamp(self, activated, timeDelta):
 		if self.lastMessageTimestamp == None:
 			self.onActiveLamp(activated)
