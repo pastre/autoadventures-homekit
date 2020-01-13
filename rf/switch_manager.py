@@ -1,4 +1,4 @@
-import arduino_driver as arduinoDriver
+import rf.arduino_driver as arduinoDriver
 
 from datetime import datetime
 from time import sleep, time_ns
@@ -28,7 +28,7 @@ class SwitchManager:
 			self.onActiveLamp(activated)
 			return
 		if self.lastActive == activated:
-			if timeDelta > 100:
+			if timeDelta > 500:
 				print("Timedelta is", timeDelta)
 				self.onActiveLamp(activated)
 				return
@@ -50,8 +50,8 @@ class SwitchManager:
 		self.lastMessageTimestamp = newTimestamp
 
 
-manager = SwitchManager(['a', 'b', 'c', 'd'], None)
-manager.setup()
-while True:
-	sleep(1)
+#manager = SwitchManager(['a', 'b', 'c', 'd'], None)
+#manager.setup()
+#while True:
+#	sleep(1)
 
